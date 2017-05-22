@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>kafEEne</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <style type="text/css">
+            h1 {
+                text-align: center;
+                padding-bottom: 1em;
+            }
+            #content {
+                width: 30%;
+                margin: 0 auto;
+            }
+            #topTable {
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="txt" align="center"></div>
+
+        <div id="content">
+            <h3>kafEEne - Kafka + Websocket</h3>
+            Topic name: <input type="text" name="topic" value="" id="topic" required="" placeholder="options: topic-1, topic-2"/>
+            <input  type="submit" value="Subscribe" name="monitor" onclick="listen()"/>
+            
+            <p></p>
+            <p></p>
+            <p></p>
+            
+            <table id="topTable" class="table">
+                <thead>
+                    <tr>
+                        <th width="150">Topic</th>
+                        <th width="100">Key</th>
+                        <th width="100">Value</th>    
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <script type="text/javascript">
+
+            function listen() {
+
+                var baseUri = window.location.href;     // Returns full URL
+                //console.log(baseUri);
+                topic = document.getElementById("topic");
+                wsUri = baseUri.concat(topic.value).concat("/");
+                wsUri = wsUri.replace("http", "ws");
+                console.log(wsUri);
+
+                var kafkaSocket = new WebSocket(wsUri);
+                kafkaSocket.onmessage = function (event) {
+                    kvPair = JSON.parse(event.data);
+                    var tableBody = $("#topTable").find("tbody");
+                    //tableBody.empty();
+
+                    var row = $("<tr>").append(
+                            $("<td>").text(kvPair["topic"]),
+                            $("<td>").text(kvPair["key"]),
+                            $("<td>").text(kvPair["val"])
+                            );
+                    tableBody.append(row);
+                };
+            }
+
+            //listen();
+        </script>
+
+    </body>
+
+</html>
