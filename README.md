@@ -5,7 +5,7 @@ Check [the blog](https://abhirockzz.wordpress.com/2017/05/22/kafeene-1-websocket
 - `git clone https://github.com/abhirockzz/kafka-websocket.git`
 - `cd dashboard` and `mvn clean install` - creates `kafka-websocket.war` in `target` directory
 - `cd producer` and `mvn clean install` - creates `kafka-producer.jar` in `target` directory
-- `cd ..` and `docker-compose up --build` - starts Kafka, Zookeeper, Payara and Producer containers (you can switch to any other [Java EE runtime](https://github.com/abhirockzz/kafka-websocket/blob/master/Dockerfile#L1))
+- `cd ..` and `docker-compose up --build` - starts Kafka, Zookeeper, Payara and Producer containers (you can switch to any other [Java EE runtime](https://github.com/abhirockzz/kafka-websocket/blob/master/dashboard/Dockerfile#L1))
 	- Kafka accessible @ `9092`
 	- Zookeeper @ `2181`
 	- Producer starts pushing records to Kafka topics (auto creates topic-1, topic-2)
