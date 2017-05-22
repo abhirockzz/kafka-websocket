@@ -11,10 +11,13 @@ Check [the blog](https://abhirockzz.wordpress.com/2017/05/22/kafeene-1-websocket
 	- Producer starts pushing records to Kafka topics (auto creates topic-1, topic-2)
 	- Port `8080` exposed from Payara container
 
+Wait for the containers to startup before you move to the testing part...
+
 ## Test
 
 - `docker-machine ip` - get the IP address of your Docker host. Let's call it `APP_HOST`
 - Open your browser and go to `http://<APP_HOST>:8080/kafka-websocket/`. Enter topic-1 or topic-2 in `subscription` input text box. You will start seeing the records being produced by the producer for that topic
+	- You can open multiple such clients/browser windows/tabs and subscribe to either of these topics
 
 ![](dashboard.jpg)
 
