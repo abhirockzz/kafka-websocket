@@ -10,6 +10,7 @@ Check [the blog](https://abhirockzz.wordpress.com/2017/05/22/kafeene-1-websocket
 	- Zookeeper @ `2181`
 	- Producer starts pushing records to Kafka topics (auto creates topic-1, topic-2)
 	- Port `8080` exposed from Payara container
+Wait for the containers to startup before you move to the testing part...
 
 Wait for the containers to startup before you move to the testing part...
 
