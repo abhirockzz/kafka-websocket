@@ -20,7 +20,6 @@ import org.apache.kafka.common.errors.WakeupException;
 public class Consumer {
 
     private KafkaConsumer<String, String> kConsumer;
-    //final String topic = "cpu-metrics";
     private static final String CONSUMER_GROUP = "test-group";
     private final AtomicBoolean stopped = new AtomicBoolean(false);
 
@@ -37,7 +36,6 @@ public class Consumer {
         consumerProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
 
         kConsumer = new KafkaConsumer<>(consumerProps);
-        //kConsumer.subscribe(Arrays.asList(topic));
         kConsumer.subscribe(Arrays.asList("topic-1", "topic-2"));
 
         System.out.println("init() complete");
