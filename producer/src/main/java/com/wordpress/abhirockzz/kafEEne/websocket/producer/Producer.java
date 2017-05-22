@@ -40,11 +40,6 @@ public class Producer implements Runnable {
         }
     }
 
-    /**
-     * produce messages
-     *
-     * @throws Exception
-     */
     private void produce() throws Exception {
 
         try {
